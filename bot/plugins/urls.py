@@ -8,7 +8,7 @@ from ..screenshotbot import ScreenShotBot
 from ..config import Config
 
 
-@ScreenShotBot.on_message(filters.private & filters.text & filters.incoming & ~filters.edited)
+@ScreenShotBot.on_message(filters.private & filters.text & filters.incoming)
 async def _(c, m):
     
     chat_id = m.chat.id
