@@ -8,8 +8,7 @@ import random
 import asyncio
 import datetime
 import traceback
-
-from pyrogram import InputMediaPhoto, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, InputMediaPhoto
 from pyrogram.errors import FloodWait
 
 from ..config import Config
