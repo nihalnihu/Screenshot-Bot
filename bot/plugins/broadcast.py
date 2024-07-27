@@ -5,7 +5,7 @@ import string
 import random
 import time
 
-from pyrogram import Filters, InlineKeyboardMarkup, InlineKeyboardButton
+from pyrogram import filters, InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import FloodWait, InputUserDeactivated, UserIsBlocked, PeerIdInvalid
 import aiofiles
 import aiofiles.os
@@ -32,7 +32,7 @@ async def send_msg(user_id, message):
         
 
 
-@ScreenShotBot.on_message(Filters.private & Filters.command("broadcast") & Filters.user(Config.AUTH_USERS) & Filters.reply)
+@ScreenShotBot.on_message(filters.private & filters.command("broadcast") & filters.user(Config.AUTH_USERS) & filters.reply)
 async def broadcast_(c, m):
     all_users = await c.db.get_all_users()
     
@@ -118,8 +118,8 @@ async def broadcast_(c, m):
     
     await aiofiles.os.remove('broadcast.txt')
     
-@ScreenShotBot.on_callback_query(Filters.create(lambda _, query: query.data.startswith('sts_bdct')) 
-                                 & Filters.user(Config.AUTH_USERS))
+@ScreenShotBot.on_callback_query(filters.create(lambda _, query: query.data.startswith('sts_bdct')) 
+                                 & filters.user(Config.AUTH_USERS))
 async def sts_broadcast_(c, cb):
     
     _, broadcast_id = cb.data.split('+')
@@ -140,8 +140,8 @@ async def sts_broadcast_(c, cb):
         show_alert=True
     )
     
-@ScreenShotBot.on_callback_query(Filters.create(lambda _, query: query.data.startswith('cncl_bdct')) 
-                                 & Filters.user(Config.AUTH_USERS))
+@ScreenShotBot.on_callback_query(filters.create(lambda _, query: query.data.startswith('cncl_bdct')) 
+                                 & filters.user(Config.AUTH_USERS))
 async def cncl_broadcast_(c, cb):
     
     _, broadcast_id = cb.data.split('+')
