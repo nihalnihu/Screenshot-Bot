@@ -24,5 +24,7 @@ app = ScreenShotBot()
 if __name__ == '__main__':
     threading.Thread(target=run_flask).start()
     
-    # Start the Pyrogram Client
-    app.run()
+    try:
+        app.run()
+    except Exception as e:
+        logger.error(f"Pyrogram client error: {e}")
