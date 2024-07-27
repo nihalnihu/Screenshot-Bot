@@ -1,5 +1,5 @@
 git+https://github.com/Tinche/aiofiles.git
 tgcrypto
 motor
-pyrogram
+pyrogram==2.0.106
 dnspython
