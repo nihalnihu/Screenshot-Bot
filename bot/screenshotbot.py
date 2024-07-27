@@ -6,7 +6,7 @@ class ScreenShotBot(Client):
 
     def __init__(self):
         super().__init__(
-            session_name="screenshotbot",
+            name=Config.SESSION_NAME,  # Correct argument for session name
             bot_token=Config.BOT_TOKEN,
             api_id=Config.API_ID,
             api_hash=Config.API_HASH,
@@ -14,14 +14,14 @@ class ScreenShotBot(Client):
             plugins=dict(
                 root="bot/plugins"
             ),
-            proxy={
-                "scheme": "http",
-                "hostname": "localhost",
-                "port": 8000
-            }
+            proxy=dict(
+                scheme="http",          # Proxy scheme (http or https)
+                hostname="localhost",   # Proxy server hostname
+                port=8000                # Proxy server port
+            )
         )
 
-        self.db = Database(Config.DATABASE_URL, "screenshotbot")
+        self.db = Database(Config.DATABASE_URL, Config.SESSION_NAME)
         self.CURRENT_PROCESSES = {}
         self.CHAT_FLOOD = {}
         self.broadcast_ids = {}
