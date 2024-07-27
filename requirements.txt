@@ -3,3 +3,4 @@ tgcrypto
 motor
 pyrogram==2.0.106
 dnspython
+flask
