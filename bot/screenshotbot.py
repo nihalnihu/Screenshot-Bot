@@ -14,11 +14,6 @@ class ScreenShotBot(Client):
             plugins=dict(
                 root="bot/plugins"
             ),
-            proxy=dict(
-                scheme="http",          # Proxy scheme (http or https)
-                hostname="localhost",   # Proxy server hostname
-                port=8000                # Proxy server port
-            )
         )
 
         self.db = Database(Config.DATABASE_URL, Config.SESSION_NAME)
